@@ -103,5 +103,11 @@
     <None Include="maps\Hallo.mm" />
     <None Include="maps\nautilus.mm" />
     <None Include="maps\normal.mm" />
+    <None Include=".gitattributes" />
+    <None Include=".gitignore" />
+    <None Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="LICENSE.txt" />
   </ItemGroup>
 </Project>

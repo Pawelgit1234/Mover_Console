@@ -110,4 +110,15 @@
   <ItemGroup>
     <Text Include="LICENSE.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="img\img1.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="img\img2.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="img\img3.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
 </Project>

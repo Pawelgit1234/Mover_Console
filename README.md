@@ -1,9 +1,9 @@
 # Mover (Console Version)
 Is a simple shooter in C++. You can draw a map and select one. 
 
-![Alt text](img/img1.png)
-![Alt text](img/img2.png)
-![Alt text](img/img3.png)
+![Alt text](img/img1.jpg)
+![Alt text](img/img2.jpg)
+![Alt text](img/img3.jpg)
 
 ## Installation
 Use the git clone command to install the code.

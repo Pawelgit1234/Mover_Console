@@ -10,7 +10,7 @@ namespace settings
 	const unsigned short START_POS_X = 5;
 	const unsigned short START_POS_Y = 5;
 
-	const unsigned short MOB_SPEED_MIN = 2; // less -> more = fast -> low | optimal 2
+	const unsigned short MOB_SPEED_MIN = 5; // less -> more = fast -> low | optimal 2
 	const unsigned short MOB_SPEED_MAX = 5;
 	const unsigned short MOB_COUNT = 50;
 

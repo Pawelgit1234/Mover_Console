@@ -9,9 +9,10 @@ namespace settings
 
 	const unsigned short START_POS_X = 5;
 	const unsigned short START_POS_Y = 5;
+	const unsigned short MOVER_SPEED = 2;
 
 	const unsigned short MOB_SPEED_MIN = 5; // less -> more = fast -> low | optimal 2
-	const unsigned short MOB_SPEED_MAX = 5;
+	const unsigned short MOB_SPEED_MAX = 7;
 	const unsigned short MOB_COUNT = 50;
 
 	const unsigned short BOOSTER_TIME = 10; // In sec

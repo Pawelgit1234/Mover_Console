@@ -26,7 +26,9 @@ public:
 	void getXY(unsigned short& outX, unsigned short& outY) { outX = x; outY = y; }
 
 private:
+	bool regulate_speed();
 
 	mutable unsigned short x = settings::START_POS_X;
 	mutable unsigned short y = settings::START_POS_Y;
+	mutable unsigned short speed_count = 1;
 };

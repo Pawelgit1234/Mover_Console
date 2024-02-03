@@ -23,7 +23,7 @@ public:
 
 public:
 	void giveBoost(std::vector<Bullet>& bullets);
-	void chekActiality();
+	void chekActuality();
 
 	void setY(short y) { this->y = y; }
 	void setX(short x) { this->x = x; }

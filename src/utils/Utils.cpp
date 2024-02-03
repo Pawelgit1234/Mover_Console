@@ -80,3 +80,15 @@ std::vector<std::vector<Map>> cleanMap()
 
     return newMap;
 }
+
+void getRandomSpawnpoint(unsigned short& x, unsigned short& y)
+{
+    while (true)
+    {
+        x = randint(0, settings::CONSOLE_WIDTH - 1);
+        y = randint(0, settings::CONSOLE_HEIGHT - 1);
+
+        if (map[y][x] == Map::AIR)
+            break;
+    }
+}

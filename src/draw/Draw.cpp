@@ -4,7 +4,7 @@ bool losed = false;
 unsigned short mobs_killed = 0;
 unsigned short wave = 0;
 
-void drawConsoleFrame(Mover& player, std::vector<Mob>& mobs, std::vector<Bullet>& bullets, Clock& clock, Booster& booster)
+void drawConsoleFrame(std::vector<Mover>& players, std::vector<Mob>& mobs, std::vector<Bullet>& bullets, Clock& clock, Booster& booster)
 {
     std::string frame;
 
@@ -36,12 +36,23 @@ void drawConsoleFrame(Mover& player, std::vector<Mob>& mobs, std::vector<Bullet>
 
             bool isBoosterPosition = (i == booster.getY() && j == booster.getX());
 
-            if (i == player.getY() && j == player.getX() && isMobPosition)
+            bool isPlayerPosition = false;
+
+            for (const Mover& player : players)
+            {
+                if (i == player.getY() && j == player.getX())
+                {
+                    isPlayerPosition = true;
+                    break;
+                }
+            }
+
+            if (isPlayerPosition && isMobPosition)
             {
                 losed = true;
                 return;
             }
-            else if (i == player.getY() && j == player.getX())
+            else if (isPlayerPosition)
             {
                 if (booster.is_invisible())
                     frame += "\033[45m \033[0m";
@@ -91,7 +102,7 @@ void drawConsoleFrame(Mover& player, std::vector<Mob>& mobs, std::vector<Bullet>
 
     if (settings::extra_info)
     {
-        frame += "Player: (X: " + std::to_string(player.getX()) + "|Y: " + std::to_string(player.getY()) + ")";
+        frame += "Player: (X: " + std::to_string(players[0].getX()) + "|Y: " + std::to_string(players[0].getY()) + ")";
         frame += "\nTime survived: " + std::to_string(clock.getTimeFromStartSec()) + " sec | mobs killed: " + std::to_string(mobs_killed) + " | wave: " + std::to_string(wave);
         frame += "\nBoost Coordinates: (X: " + std::to_string(booster.getX()) + "|Y: " + std::to_string(booster.getY()) + ")";
     }

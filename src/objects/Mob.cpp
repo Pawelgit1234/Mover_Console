@@ -2,23 +2,15 @@
 
 Mob::Mob() : speed_count(1), speed_max(randint(settings::MOB_SPEED_MIN, settings::MOB_SPEED_MAX))
 {
-	int x;
-	int y;
+    unsigned short xCoordinate;
+    unsigned short yCoordinate;
+    getRandomSpawnpoint(xCoordinate, yCoordinate);
 
-	while (true)
-	{
-		x = randint(1, settings::CONSOLE_WIDTH - 1);
-		y = randint(1, settings::CONSOLE_HEIGHT - 1);
-
-		if (map[y][x] != BLOCK)
-			break;
-	}
-
-	this->x = x;
-	this->y = y;
+    x = xCoordinate;
+    y = yCoordinate;
 }
 
-void Mob::calculateNextCoordinate(Mover& player)
+void Mob::calculateNextCoordinate(std::vector<Mover>& players)
 {
     if (speed_count < speed_max)
     {
@@ -28,31 +20,44 @@ void Mob::calculateNextCoordinate(Mover& player)
     else
         speed_count = 1;
 
-    unsigned short playerX = player.getX();
-    unsigned short playerY = player.getY();
+    const Mover* closestPlayer = nullptr;
+    unsigned int minDistance = std::numeric_limits<unsigned int>::max();
 
-    int xDiff = playerX - x;
-    int yDiff = playerY - y;
-
-    int xDirection = (xDiff > 0) ? 1 : ((xDiff < 0) ? -1 : 0);
-    int yDirection = (yDiff > 0) ? 1 : ((yDiff < 0) ? -1 : 0);
-
-    if (x + xDirection > 0 && x + xDirection <= settings::CONSOLE_WIDTH &&
-        y + yDirection > 0 && y + yDirection <= settings::CONSOLE_HEIGHT &&
-        map[y + yDirection][x + xDirection] != BLOCK)
+    for (const auto& player : players)
     {
-        x += xDirection;
-        y += yDirection;
+        unsigned int distance = abs(player.getX() - x) + abs(player.getY() - y);
+        if (distance < minDistance)
+        {
+            minDistance = distance;
+            closestPlayer = &player;
+        }
     }
-    else if (y + yDirection > 0 && y + yDirection <= settings::CONSOLE_HEIGHT &&
-        map[y + yDirection][x] != BLOCK)
+
+    if (closestPlayer)
     {
-        y += yDirection;
-    }
-    else if (x + xDirection > 0 && x + xDirection <= settings::CONSOLE_WIDTH &&
-        map[y][x + xDirection] != BLOCK)
-    {
-        x += xDirection;
+        int xDiff = closestPlayer->getX() - x;
+        int yDiff = closestPlayer->getY() - y;
+
+        int xDirection = (xDiff > 0) ? 1 : ((xDiff < 0) ? -1 : 0);
+        int yDirection = (yDiff > 0) ? 1 : ((yDiff < 0) ? -1 : 0);
+
+        if (x + xDirection > 0 && x + xDirection <= settings::CONSOLE_WIDTH &&
+            y + yDirection > 0 && y + yDirection <= settings::CONSOLE_HEIGHT &&
+            map[y + yDirection][x + xDirection] != BLOCK)
+        {
+            x += xDirection;
+            y += yDirection;
+        }
+        else if (y + yDirection > 0 && y + yDirection <= settings::CONSOLE_HEIGHT &&
+            map[y + yDirection][x] != BLOCK)
+        {
+            y += yDirection;
+        }
+        else if (x + xDirection > 0 && x + xDirection <= settings::CONSOLE_WIDTH &&
+            map[y][x + xDirection] != BLOCK)
+        {
+            x += xDirection;
+        }
     }
 }
 

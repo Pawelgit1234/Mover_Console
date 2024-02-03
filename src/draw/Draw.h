@@ -16,4 +16,4 @@ extern bool losed;
 extern unsigned short mobs_killed;
 extern unsigned short wave;
 
-void drawConsoleFrame(Mover& player, std::vector<Mob>& mobs, std::vector<Bullet>& bullets, Clock& clock, Booster& booster);
+void drawConsoleFrame(std::vector<Mover>& players, std::vector<Mob>& mobs, std::vector<Bullet>& bullets, Clock& clock, Booster& booster);

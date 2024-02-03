@@ -4,20 +4,7 @@ Booster::Booster() : clock(), isInvisible(false), isPierce(false) { move(); chan
 
 void Booster::move()
 {
-	int x;
-	int y;
-
-	while (true)
-	{
-		x = randint(1, settings::CONSOLE_WIDTH - 1);
-		y = randint(1, settings::CONSOLE_HEIGHT - 1);
-
-		if (map[y][x] != BLOCK)
-			break;
-	}
-
-	this->x = x;
-	this->y = y;
+	getRandomSpawnpoint(x, y);
 }
 
 void Booster::changeType()
@@ -55,7 +42,7 @@ void Booster::giveBoost(std::vector<Bullet>& bullets)
 	move();
 }
 
-void Booster::chekActiality()
+void Booster::chekActuality()
 {
 	if (clock.getTimeFromStartSec() > settings::BOOSTER_TIME)
 	{

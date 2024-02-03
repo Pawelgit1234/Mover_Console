@@ -4,12 +4,12 @@
 
 #include "../settings.h"
 #include "Map.h"
+#include "../utils/Utils.h"
 
 class Mover final
 {
 public:
-	Mover() = default;
-	void operator=(const Mover&) = delete;
+	Mover();
 
 public:
 	void up();
@@ -28,7 +28,7 @@ public:
 private:
 	bool regulate_speed();
 
-	mutable unsigned short x = settings::START_POS_X;
-	mutable unsigned short y = settings::START_POS_Y;
+	mutable unsigned short x;
+	mutable unsigned short y;
 	mutable unsigned short speed_count = 1;
 };

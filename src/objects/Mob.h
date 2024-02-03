@@ -23,7 +23,7 @@ public:
 	short getX() const { return x; }
 	void getXY( short& outX, short& outY) { outX = x; outY = y; }
 
-	void calculateNextCoordinate(Mover& player);
+	void calculateNextCoordinate(std::vector<Mover>& players);
 
 private:
 	mutable short x;

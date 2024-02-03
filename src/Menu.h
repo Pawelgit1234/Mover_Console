@@ -5,6 +5,8 @@
 #include <iostream>
 #include <thread>
 
+#include "multiplayer/server.h"
+#include "multiplayer/Client.h"
 #include "draw/Draw.h"
 #include "objects/Mob.h"
 #include "objects/Bullet.h"

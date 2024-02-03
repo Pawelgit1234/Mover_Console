@@ -14,6 +14,7 @@ class Bullet
 {
 public:
 	Bullet(unsigned short Bulletx, unsigned short Bullety, BulletDirection b);
+	Bullet() = default;
 
 public:
 	void move();

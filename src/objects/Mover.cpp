@@ -1,5 +1,7 @@
 #include "Mover.h"
 
+Mover::Mover() { getRandomSpawnpoint(x, y); }
+
 void Mover::up()
 {
 	if (!regulate_speed())

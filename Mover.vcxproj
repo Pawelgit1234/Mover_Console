@@ -70,6 +70,18 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ExternalIncludePath>C:\Users\ellaw\OneDrive\Dokumente\libralies\boost_1_82_0;$(ExternalIncludePath)</ExternalIncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ExternalIncludePath>C:\Users\ellaw\OneDrive\Dokumente\libralies\boost_1_82_0;$(ExternalIncludePath)</ExternalIncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ExternalIncludePath>C:\Users\ellaw\OneDrive\Dokumente\libralies\boost_1_82_0;$(ExternalIncludePath)</ExternalIncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ExternalIncludePath>C:\Users\ellaw\OneDrive\Dokumente\libralies\boost_1_82_0;$(ExternalIncludePath)</ExternalIncludePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -77,6 +89,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>C:\Users\ellaw\OneDrive\Dokumente\libralies\boost_1_82_0\libs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -92,6 +105,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>C:\Users\ellaw\OneDrive\Dokumente\libralies\boost_1_82_0\libs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -107,6 +121,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>C:\Users\ellaw\OneDrive\Dokumente\libralies\boost_1_82_0\libs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -122,6 +137,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>C:\Users\ellaw\OneDrive\Dokumente\libralies\boost_1_82_0\libs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -131,9 +147,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\multiplayer\ClientSession.cpp" />
     <ClCompile Include="src\draw\DrawMap.cpp" />
     <ClCompile Include="src\draw\SelectMap.cpp" />
     <ClCompile Include="src\Menu.cpp" />
+    <ClCompile Include="src\multiplayer\Client.cpp" />
+    <ClCompile Include="src\multiplayer\Server.cpp" />
     <ClCompile Include="src\objects\Booster.cpp" />
     <ClCompile Include="src\objects\Bullet.cpp" />
     <ClCompile Include="src\utils\Clock.cpp" />
@@ -147,9 +166,13 @@
     <ClCompile Include="src\utils\Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\multiplayer\ClientSession.h" />
     <ClInclude Include="src\draw\DrawMap.h" />
     <ClInclude Include="src\draw\SelectMap.h" />
     <ClInclude Include="src\Menu.h" />
+    <ClInclude Include="src\multiplayer\Client.h" />
+    <ClInclude Include="src\multiplayer\Message.h" />
+    <ClInclude Include="src\multiplayer\Server.h" />
     <ClInclude Include="src\objects\Booster.h" />
     <ClInclude Include="src\objects\Bullet.h" />
     <ClInclude Include="src\utils\Clock.h" />

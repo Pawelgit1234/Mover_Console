@@ -71,9 +71,10 @@ void Menu::singlePlayer()
 	Mover mover;
 	std::vector<Mob> mobs;
 	std::vector<Bullet> bullets;
-
-	Clock clock;
 	Booster booster;
+	Clock clock;
+
+	bool can_start = false;
 
 	while (true)
 	{
@@ -125,19 +126,25 @@ void Menu::singlePlayer()
 				}
 			}
 
-			booster.chekActiality();
+			std::vector<Mover> moverVector;
+			moverVector.push_back(mover);
+
+			if (!can_start)
+			{
+				drawConsoleFrame(moverVector, mobs, bullets, clock, booster);
+				std::this_thread::sleep_for(std::chrono::seconds(settings::TIME_TO_WAIT_BEFORE_START));
+				clock.clear();
+				can_start = true;
+			}
+
+			booster.chekActuality();
 
 			if (booster.getX() == mover.getX() && booster.getY() == mover.getY())
 				booster.giveBoost(bullets);
 
-			if (mobs.empty())
-				losed = true;
-
-			drawConsoleFrame(mover, mobs, bullets, clock, booster);
-
 			if (!booster.is_invisible())
 				for (Mob& mob : mobs)
-					mob.calculateNextCoordinate(mover);
+					mob.calculateNextCoordinate(moverVector);
 
 			for (Bullet& b : bullets)
 			{
@@ -165,6 +172,7 @@ void Menu::singlePlayer()
 				}), bullets.end());
 
 			std::this_thread::sleep_for(std::chrono::milliseconds((int)1000 / settings::FPS));
+			drawConsoleFrame(moverVector, mobs, bullets, clock, booster);
 		}
 		else
 			break;
@@ -182,6 +190,28 @@ void Menu::singlePlayer()
 
 void Menu::multiPlayer()
 {
+	system("cls");
+	int choice;
+	std::cout << "Server[0] or Client[1]: ";
+	std::cin >> choice;
+	if (choice == 0)
+	{
+		std::cout << "Clients count [2 - 10]: ";
+		std::cin >> choice;
+		if (choice > settings::MAX_MOVER_COUNT || choice < settings::MIN_MOVER_COUNT)
+		{
+			std::cerr << "Error: Wrong count of Players" << std::endl;
+			return;
+		}
+
+		Server server(choice);
+		server.start(8080);
+	}
+	else if (choice == 1)
+	{
+		Client client;
+		client.connect("127.0.0.1", 8080);
+	}
 }
 
 void Menu::keyBinds()

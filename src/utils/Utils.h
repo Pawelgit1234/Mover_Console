@@ -13,3 +13,4 @@ int randint(int min, int max);
 void loadMap(std::string& filename);
 std::vector<std::vector<Map>> readMap(std::string& filename);
 std::vector<std::vector<Map>> cleanMap();
+void getRandomSpawnpoint(unsigned short& x, unsigned short& y);

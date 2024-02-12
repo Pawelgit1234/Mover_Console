@@ -19,7 +19,7 @@ class Booster
 {
 public:
 	Booster();
-	Booster& operator=(const Booster& other) = delete;
+	Booster& operator=(const Booster& other);
 
 public:
 	void giveBoost(std::vector<Bullet>& bullets);

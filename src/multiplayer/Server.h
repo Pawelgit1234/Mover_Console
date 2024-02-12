@@ -6,6 +6,8 @@
 #include <vector>
 #include <iostream>
 #include <thread>
+#include <memory>
+#include <mutex>
 
 #include "ClientSession.h"
 #include "../objects/Bullet.h"
@@ -16,6 +18,7 @@
 #include "../settings.h"
 #include "Message.h"
 #include "../utils/Utils.h";
+#include "../utils/Logger.h"
 
 class Server final
 {
@@ -23,14 +26,16 @@ public:
 	Server(unsigned short clients_count);
 
 public:
-	void start(unsigned short port);
+	void start();
 
 private:
 	void calculateNextGameObjectsPosition();
+	void acceptNewConnections();
 
 	boost::asio::io_context io_context_;
-	boost::asio::ip::tcp::acceptor acceptor_{io_context_};
-	std::deque<ClientSession> clients_;
+	boost::asio::ip::tcp::acceptor acceptor_;
+	boost::asio::ip::udp::socket udp_socket_;
+	std::deque<std::shared_ptr<ClientSession>> clients_;
 
 	std::vector<Bullet> bullets_;
 	std::vector<Mover> movers_;
@@ -38,5 +43,5 @@ private:
 	Booster booster_;
 
 	unsigned short clients_count_;
-	bool game_is_on = false;
+	bool gameIsOn = false;
 };

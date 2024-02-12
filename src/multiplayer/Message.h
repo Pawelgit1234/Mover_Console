@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include <vector>
 #include <cstdint>
@@ -10,8 +10,13 @@ namespace message
     enum class MessageType
     {
         MOVERS,
+        MOVER,
+        MOBS,
+        BOOSTER,
         MAP,
-        BULLETS
+        BULLETS,
+        START,
+        CLOSE,
     };
 
     struct MessageHeader
@@ -40,8 +45,8 @@ namespace message
                 throw std::runtime_error("Not enough data in the message body to retrieve type T");
 
             T result;
-            std::memcpy(&result, &body[body.size() - sizeof(T)], sizeof(T));
-            body.resize(body.size() - sizeof(T));
+            std::memcpy(&result, &body[0], sizeof(T));
+            body.erase(body.begin(), body.begin() + sizeof(T));
             header.size -= sizeof(T);
             return result;
         }

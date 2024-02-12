@@ -2,6 +2,19 @@
 
 Booster::Booster() : clock(), isInvisible(false), isPierce(false) { move(); changeType(); }
 
+Booster& Booster::operator=(const Booster& other)
+{
+	if (this != &other)
+	{
+		this->x = other.x;
+		this->y = other.y;
+		this->type = other.type;
+		this->isInvisible = other.isInvisible;
+		this->isPierce = other.isPierce;
+	}
+	return *this;
+}
+
 void Booster::move()
 {
 	getRandomSpawnpoint(x, y);

@@ -107,5 +107,5 @@ void drawConsoleFrame(std::vector<Mover>& players, std::vector<Mob>& mobs, std::
         frame += "\nBoost Coordinates: (X: " + std::to_string(booster.getX()) + "|Y: " + std::to_string(booster.getY()) + ")";
     }
 
-    std::cout << "\033[2J\033[1;1H" << frame;
+    std::cout << "\033[2J\033[1;1H" << frame << std::endl;
 }

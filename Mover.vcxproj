@@ -163,6 +163,7 @@
     <ClCompile Include="src\objects\Mover.cpp" />
     <ClCompile Include="src\settings.cpp" />
     <ClCompile Include="src\utils\Keyboard.cpp" />
+    <ClCompile Include="src\utils\Logger.cpp" />
     <ClCompile Include="src\utils\Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -182,6 +183,7 @@
     <ClInclude Include="src\objects\Mob.h" />
     <ClInclude Include="src\objects\Mover.h" />
     <ClInclude Include="src\settings.h" />
+    <ClInclude Include="src\utils\Logger.h" />
     <ClInclude Include="src\utils\Utils.h" />
   </ItemGroup>
   <ItemGroup>

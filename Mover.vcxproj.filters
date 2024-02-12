@@ -66,6 +66,9 @@
     <ClCompile Include="src\multiplayer\ClientSession.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\utils\Logger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\objects\Booster.h">
@@ -117,6 +120,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\multiplayer\Message.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils\Logger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

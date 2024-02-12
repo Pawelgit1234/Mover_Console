@@ -205,12 +205,12 @@ void Menu::multiPlayer()
 		}
 
 		Server server(choice);
-		server.start(8080);
+		server.start();
 	}
 	else if (choice == 1)
 	{
 		Client client;
-		client.connect("127.0.0.1", 8080);
+		client.connect("127.0.0.1");
 	}
 }
 

@@ -15,11 +15,15 @@ namespace settings
 
 	const unsigned short MOB_SPEED_MIN = 5; // less -> more = fast -> low | optimal 2
 	const unsigned short MOB_SPEED_MAX = 7;
-	const unsigned short MOB_COUNT = 100;
+	const unsigned short MOB_COUNT = 20;
 
 	const unsigned short BOOSTER_TIME = 10; // In sec
 
 	const unsigned short FPS = 50;
 
+	const unsigned short TCP_PORT = 8080;
+	const unsigned short UDP_PORT = 8888;
+
 	extern bool extra_info;
+	extern bool logging;
 }
